@@ -12,6 +12,7 @@ async def handle_slow(request):
     await asyncio.sleep(5)
     return web.Response(text="Operation completed")
 
+
 app = web.Application()
 app.router.add_get('/', handle_root)
 app.router.add_get('/slow', handle_slow)

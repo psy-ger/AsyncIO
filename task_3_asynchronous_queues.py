@@ -28,7 +28,7 @@ async def consumer(queue: asyncio.Queue, consumer_id: int):
 async def main():
     queue = asyncio.Queue()
     num_consumers = 2
-    consumers = [consumer(queue, i+1) for i in range(num_consumers)]
+    consumers = [consumer(queue, i + 1) for i in range(num_consumers)]
     producer_task = asyncio.create_task(producer(queue))
     consumer_tasks = [asyncio.create_task(c) for c in consumers]
 

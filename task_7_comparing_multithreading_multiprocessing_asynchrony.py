@@ -32,7 +32,7 @@ def thread_request():
     """Runs NUM_REQUESTS using ThreadPoolExecutor and prints the elapsed time."""
     start = time.time()
     with ThreadPoolExecutor() as executor:
-        list(executor.map(sync_request, [URL]*NUM_REQUESTS))
+        list(executor.map(sync_request, [URL] * NUM_REQUESTS))
     print(f"Threads: {time.time() - start:.2f} seconds")
 
 
@@ -40,7 +40,7 @@ def process_request():
     """Runs NUM_REQUESTS using ProcessPoolExecutor and prints the elapsed time."""
     start = time.time()
     with ProcessPoolExecutor() as executor:
-        list(executor.map(sync_request, [URL]*NUM_REQUESTS))
+        list(executor.map(sync_request, [URL] * NUM_REQUESTS))
     print(f"Processes: {time.time() - start:.2f} seconds")
 
 
@@ -64,6 +64,7 @@ async def run_async():
         tasks = [async_request(session, URL) for _ in range(NUM_REQUESTS)]
         await asyncio.gather(*tasks)
     print(f"Async: {time.time() - start:.2f} seconds")
+
 
 if __name__ == "__main__":
     print("Running sync...")
